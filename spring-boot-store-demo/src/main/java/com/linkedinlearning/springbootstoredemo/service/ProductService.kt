@@ -1,37 +1,32 @@
-package com.linkedinlearning.springbootstoredemo.service;
+package com.linkedinlearning.springbootstoredemo.service
 
-import com.linkedinlearning.springbootstoredemo.model.Product;
-import org.jetbrains.annotations.NotNull;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
+import com.linkedinlearning.springbootstoredemo.model.Product
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.jdbc.core.BeanPropertyRowMapper
+import org.springframework.jdbc.core.JdbcTemplate
+import org.springframework.stereotype.Service
 
 /**
  * Encapsulates supported database interactions to be used by application controllers
  */
 @Service
-public class ProductService {
-
-    @Autowired JdbcTemplate jdbcTemplate;
-
-    public List<Product> allProducts() {
-        String sql = "SELECT * FROM products";
-        return jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(Product.class));
+class ProductService {
+    @Autowired
+    var jdbcTemplate: JdbcTemplate? = null
+    fun allProducts(): List<Product> {
+        val sql = "SELECT * FROM products"
+        return jdbcTemplate!!.query(sql, BeanPropertyRowMapper.newInstance(Product::class.java))
     }
 
-    @NotNull
-    public Product insert(Product product) {
-        jdbcTemplate.update(
+    fun insert(product: Product?): Product {
+        jdbcTemplate!!.update(
                 "INSERT INTO products VALUES(?, ?, ?, ?, ?)",
-                product.getUpc(),
-                product.getName(),
-                product.getType(),
-                product.getDescription(),
-                product.getThumbnail()
-        );
-        return product;
+                product?.upc,
+                product?.name,
+                product?.type,
+                product?.description,
+                product?.thumbnail
+        )
+        return product!!
     }
 }
