@@ -1,15 +1,15 @@
-package com.linkedinlearning.springbootstoredemo.auth;
+package com.linkedinlearning.springbootstoredemo.auth
 
-import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.boot.autoconfigure.security.servlet.PathRequest
+import org.springframework.context.annotation.Bean
+import org.springframework.context.annotation.Configuration
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder
+import org.springframework.security.config.annotation.web.builders.HttpSecurity
+import org.springframework.security.config.annotation.web.builders.WebSecurity
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
+import org.springframework.security.crypto.password.PasswordEncoder
 
 /**
  * Controls access to endpoints and resources.
@@ -18,25 +18,22 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  */
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
-
-    public static final String ROLE_ADMIN = "ADMIN";
-
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+open class SecurityConfig : WebSecurityConfigurerAdapter() {
+    @Throws(Exception::class)
+    override fun configure(auth: AuthenticationManagerBuilder) {
         auth.inMemoryAuthentication()
                 .withUser("admin")
                 .password(passwordEncoder().encode("password"))
-                .roles(ROLE_ADMIN);
+                .roles(ROLE_ADMIN)
     }
 
-    @Override
-    public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/resources/**");
+    @Throws(Exception::class)
+    override fun configure(web: WebSecurity) {
+        web.ignoring().antMatchers("/resources/**")
     }
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
+    @Throws(Exception::class)
+    override fun configure(http: HttpSecurity) {
         http.authorizeRequests()
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                 .antMatchers("/admin/**").hasRole(ROLE_ADMIN)
@@ -44,11 +41,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest()
                 .authenticated()
                 .and()
-                .httpBasic();
+                .httpBasic()
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+    open fun passwordEncoder(): PasswordEncoder {
+        return BCryptPasswordEncoder()
+    }
+
+    companion object {
+        const val ROLE_ADMIN = "ADMIN"
     }
 }
