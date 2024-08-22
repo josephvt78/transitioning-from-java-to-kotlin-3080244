@@ -20,6 +20,19 @@ fun Application.configureRouting() {
             call.respond(ProductDatabase.dao.products())
         }
 
+        get("/product") {
+            val strUpc = call.parameters.get("upc")
+            if (strUpc == null) {
+                call.respond(HttpStatusCode.NotFound)
+            } else {
+                val upc = Integer.valueOf(strUpc)
+                when (val queriedProduct = ProductDatabase.dao.product(upc)) {
+                    null -> call.respondText("{}", status = HttpStatusCode.OK)
+                    else -> call.respond(queriedProduct)
+                }
+            }
+        }
+
         authenticate {
             post("/add-product") {
                 val body = call.receive<Product>()
