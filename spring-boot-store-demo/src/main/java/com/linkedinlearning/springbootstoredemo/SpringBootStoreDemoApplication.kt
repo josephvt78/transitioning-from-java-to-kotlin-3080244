@@ -1,13 +1,14 @@
-package com.linkedinlearning.springbootstoredemo;
+package com.linkedinlearning.springbootstoredemo
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.SpringApplication
+import org.springframework.boot.autoconfigure.SpringBootApplication
 
 @SpringBootApplication
-public class SpringBootStoreDemoApplication {
-
-	public static void main(String[] args) {
-		SpringApplication.run(SpringBootStoreDemoApplication.class, args);
-	}
-
+open class SpringBootStoreDemoApplication {
+    companion object {
+        @JvmStatic
+        fun main(args: Array<String>) {
+            SpringApplication.run(SpringBootStoreDemoApplication::class.java, *args)
+        }
+    }
 }
