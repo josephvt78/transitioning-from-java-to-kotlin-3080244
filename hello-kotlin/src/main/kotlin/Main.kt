@@ -1,20 +1,15 @@
-fun main(args : Array<String>) {
-    print("Enter number of the Month: ")
-    var monthOfYear = readLine()!!.toInt()
-    var month= when(monthOfYear) {
-        1->"January"
-        2->"February"
-        3->"March"
-        4->"April"
-        5->"May"
-        6->"June"
-        7->"July"
-        8->"August"
-        9->"September"
-        10->"October"
-        11->"November"
-        12->"December"
-        else-> "Not a month of year"
+fun main(args: Array<String>) {
+
+    var num1 = 4
+    outer1@ while (num1 > 0) {
+        num1--
+        var num2 = 4
+
+        inner1@ while (num2 > 0) {
+            if (num1 <= 2)
+                continue@outer1
+            println("num1 = $num1, num2 = $num2")
+            num2--
+        }
     }
-    print(month)
 }
