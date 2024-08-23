@@ -1,9 +1,10 @@
 fun main(args: Array<String>) {
-    var a = 20
-    var b = 4
-    println("a + b = " + (a + b))
-    println("a - b = " + (a - b))
-    println("a * b = " + (a * (b)))
-    println("a / b = " + (a / b))
-    println("a % b = " + (a % (b)))
+    var c = 30
+    var d = 40
+    println("c > d = "+(c>d))
+    println("c < d = "+(c.compareTo(d) < 0))
+    println("c >= d = "+(c>=d))
+    println("c <= d = "+(c.compareTo(d) <= 0))
+    println("c == d = "+(c==d))
+    println("c != d = "+(!(c?.equals(d) ?: (d === null))))
 }
