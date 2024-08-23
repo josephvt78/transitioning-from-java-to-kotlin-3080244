@@ -1,6 +1,7 @@
 fun main(args: Array<String>) {
-    var rollno = 260
-    var name = "joe"
-    name = "joe v"
-    println("name: ${name.uppercase()} & roll no: ${rollno}")
+    val rollno = 260
+    val name = "joe"
+    // name = "joe v" //results in compilation error
+    val name1 = name
+    println("name: ${name1.uppercase()} & roll no: ${rollno}")
 }
