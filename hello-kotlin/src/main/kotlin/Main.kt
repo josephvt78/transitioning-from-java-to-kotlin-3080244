@@ -1,16 +1,13 @@
-fun main(args: Array<String>) {
+fun main(args: Array<String>)
+{
 
-    print("Enter an Integer value: ")
-    val string1 = readLine()!!
-
-    // .toInt() function converts the string into Integer
-    var integerValue: Int = string1.toInt()
-    println("You entered: $integerValue")
-
-    print("Enter a double value: ")
-    val string2= readLine()!!
-
-    // .toDouble() function converts the string into Double
-    var doubleValue: Double = string2.toDouble()
-    println("You entered: $doubleValue")
+    println("259 to byte: " + (259.toByte()))
+    println("50000 to short: " + (50000.toShort()))
+    println("21474847499 to Int: " + (21474847499.toInt()))
+    println("10L to Int: " + (10L.toInt()))
+    println("22.54 to Int: " + (22.54.toInt()))
+    println("22 to float: " + (22.toFloat()))
+    println("65 to char: " + (65.toChar()))
+    // Char to Number is deprecated in kotlin
+    println("A to Int: " + ('A'.toInt()))
 }
