@@ -1,5 +1,5 @@
 fun main()
 {
-    val arrayname = Array(5, { i -> i + 5 })
-    arrayname.forEach({value -> println(value)})
+    var s =" String"
+    print(s.subSequence(1, 4)) //Str
 }
