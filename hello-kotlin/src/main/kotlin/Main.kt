@@ -1,14 +1,7 @@
 fun main(args: Array<String>) {
-    var a = 10
-    var b = 5
-    a+=b
-    println(a)
-    a-=b
-    println(a)
-    a*=b
-    println(a)
-    a/=b
-    println(a)
-    a%=b
-    println(a)
+    var e=10
+    println("First print then increment: "+ e++)
+    println("First increment then print: "+ ++e)
+    println("First print then decrement: "+ e--)
+    println("First decrement then print: "+ --e)
 }
