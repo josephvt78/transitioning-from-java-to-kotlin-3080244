@@ -1,7 +1,12 @@
 fun main(args: Array<String>) {
-    var e=10
-    println("First print then increment: "+ e++)
-    println("First increment then print: "+ ++e)
-    println("First print then decrement: "+ e--)
-    println("First decrement then print: "+ --e)
+    var x = 100
+    var y = 25
+    var z = 10
+    var result = false
+    if(x > y && x > z)
+        println(x)
+    if(x < y || x > z)
+        println(y)
+    if( result.not())
+        println("Logical operators")
 }
