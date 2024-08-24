@@ -1,11 +1,10 @@
-fun student(name: String = "test name1", rollNo: Int = 0, grade: Int = 0) {
-    print("\n Name: $name, Roll No:$rollNo, Grade: $grade\n")
+fun Fact(num: Int): Long {
+    return if (num == 1) num.toLong() // terminate condition
+    else num * Fact(num - 1)
 }
-
+// main method
 fun main()
 {
-    val n ="Joe"
-    val r = 123
-    val g = 12
-    student(rollNo=123, name="Ann")
+    println("Factorial of 6 is: " + Fact(6))
+    // Recursive call
 }
